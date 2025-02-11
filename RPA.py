@@ -15,21 +15,7 @@ import math
 import sys
 import io
 
-CHROMEDRIVER_PATH = os.path.join(os.getcwd(), "chromedriver.exe")
-
-chrome_options = Options()
-
-# เปลี่ยนจาก os.getcwd() เป็น path ที่เข้าถึงได้ง่าย
-download_file =  'C:/Users/Ratti/RPA_pullSA/Report_file'
-
-chrome_options.add_experimental_option("prefs", {
-    "download.default_directory": f"{download_file}",
-    "download.prompt_for_download": False,
-    "directory_upgrade": True
-})
-
-service = Service(CHROMEDRIVER_PATH)
-driver = webdriver.Chrome(service=service, options=chrome_options)
+driver = webdriver.Chrome()
 
 try :
     driver.get("https://eis4ce.cpall.co.th/bench")
@@ -96,7 +82,7 @@ try :
 
     Export_button = driver.find_element(By.XPATH, '/html/body/div[8]/div[2]/div/div[23]/div[2]/div[3]/div/a/input')
     Export_button.click()
-    time.sleep(2)
+    time.sleep(5)
 
 finally:
     driver.quit()
